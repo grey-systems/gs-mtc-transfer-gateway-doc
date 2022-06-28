@@ -389,18 +389,18 @@ paths:
         `This method requires authentication`
       operationId: searchTransfer
       parameters:
-        - name: SearchTransferRequest
+        - name: PayTransferRequest
           in: body
           required: true
           schema:
-            $ref: "#/definitions/SearchTransferRequest"
+            $ref: "#/definitions/PayTransferRequest"
       tags:
         - payments
       responses:
         "200":
           description: Transfer successfully send.
           schema: 
-            $ref: '#/definitions/SearchTransferResponse'
+            $ref: '#/definitions/PayTransferResponse'
         "401":
           description: "Unauthorized."
           schema:
@@ -980,7 +980,7 @@ definitions:
         type: String
         example: null
                 
-  SearchTransferRequest:
+  PayTransferRequest:
     type: object
     required:
       - agentId
@@ -1010,7 +1010,7 @@ definitions:
         type: String
         example: "1990-12-25"
                 
-  SearchTransferResponse:
+  PayTransferResponse:
     type: object
     required:
       - agentId
