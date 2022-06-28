@@ -195,7 +195,7 @@
         }
       }
     },
-    "/transfer/payment/search": {
+    "/transfer/payment": {
       "post": {
         "summary": "Search a transfer before paying.",
         "description": "Search new transfers in the Pushmoney system.\n\n`This method requires authentication`\n",
@@ -218,52 +218,6 @@
             "description": "Transfer successfully send.",
             "schema": {
               "$ref": "#/definitions/SearchTransferResponse"
-            }
-          },
-          "400": {
-            "description": "Invalid Request. Message attribute of response contains detailed information about the issue",
-            "schema": {
-              "$ref": "#/definitions/Error"
-            }
-          },
-          "401": {
-            "description": "Unauthorized.",
-            "schema": {
-              "$ref": "#/definitions/Error"
-            }
-          },
-          "409": {
-            "description": "Conflict. Message attribute of response contains duplicate customer, etc.",
-            "schema": {
-              "$ref": "#/definitions/Error"
-            }
-          }
-        }
-      }
-    },
-    "/transfer/payment/reserve": {
-      "post": {
-        "summary": "Reserve a transfer before paying.",
-        "description": "Reserve new transfers in the Pushmoney system.\n\n`This method requires authentication`\n",
-        "operationId": "sendTransfer",
-        "parameters": [
-          {
-            "name": "SendRequest",
-            "in": "body",
-            "required": true,
-            "schema": {
-              "$ref": "#/definitions/SendRequest"
-            }
-          }
-        ],
-        "tags": [
-          "payments"
-        ],
-        "responses": {
-          "200": {
-            "description": "Transfer successfully send.",
-            "schema": {
-              "$ref": "#/definitions/SendResponse"
             }
           },
           "400": {
