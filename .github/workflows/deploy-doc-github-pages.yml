@@ -2,7 +2,7 @@ name: deploy-doc-to-github-pages
 on:
   push:
     branches:
-      - 'develop'
+      - 'main'
 jobs:
   deploy-swagger-doc:
     runs-on: ubuntu-latest
