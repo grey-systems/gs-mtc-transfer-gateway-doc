@@ -202,11 +202,11 @@
         "operationId": "searchTransfer",
         "parameters": [
           {
-            "name": "SearchTransferRequest",
+            "name": "PayTransferRequest",
             "in": "body",
             "required": true,
             "schema": {
-              "$ref": "#/definitions/SearchTransferRequest"
+              "$ref": "#/definitions/PayTransferRequest"
             }
           }
         ],
@@ -217,7 +217,7 @@
           "200": {
             "description": "Transfer successfully send.",
             "schema": {
-              "$ref": "#/definitions/SearchTransferResponse"
+              "$ref": "#/definitions/PayTransferResponse"
             }
           },
           "400": {
@@ -943,7 +943,7 @@
         }
       }
     },
-    "SearchTransferRequest": {
+    "PayTransferRequest": {
       "type": "object",
       "required": [
         "agentId",
@@ -980,7 +980,7 @@
         }
       }
     },
-    "SearchTransferResponse": {
+    "PayTransferResponse": {
       "type": "object",
       "required": [
         "agentId",
