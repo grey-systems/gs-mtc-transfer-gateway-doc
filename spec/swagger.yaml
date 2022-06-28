@@ -382,9 +382,9 @@ paths:
             
   "/transfer/payment":
     post:
-      summary: Search a transfer before paying.
+      summary: Pay a transfer.
       description: | 
-        Search new transfers in the Pushmoney system.
+        Pay a transfer.
 
         `This method requires authentication`
       operationId: searchTransfer
@@ -640,11 +640,11 @@ definitions:
         type: BigInteger
         example: 11212
       senderCustomer:
-        description: Customer identity document.
-        $ref: "#/definitions/SenderCustomer"
+        description: Sender customer.
+        $ref: "#/definitions/PrimaryCustomer"
       beneficiaryCustomer:
-        description: Customer identity document.
-        $ref: "#/definitions/DestinationCustomer"
+        description: Beneficiary customer.
+        $ref: "#/definitions/SecondaryCustomer"
       sourceCurrency:
         description: ISO 3166 currency iso code (Alpha3), Sending currency code ISO.
         type: String
@@ -712,7 +712,7 @@ definitions:
         type: String
         example: null  
 
-  SenderCustomer:
+  PrimaryCustomer:
     type: object
     required:
       - firstName
@@ -833,7 +833,7 @@ definitions:
         type: Boolean
         example: false
        
-  DestinationCustomer:
+  SecondaryCustomer:
     type: object
     required:
       - firstName
@@ -983,45 +983,84 @@ definitions:
   PayTransferRequest:
     type: object
     required:
-      - agentId
+      - agentId 
       - transactionCode
-      - destAmount
-      - beneficiaryName
-      - beneficiaryBirthDate
+      - senderCustomer 
+      - beneficiaryCustomer  
+      - destinationCountry
+      - sourceCountry
+      - sourceAmount
+      - destinationAmount
+      - sendingDate
     properties:
       agentId:
-        description: Identifier of the sending agent.
-        type: String
+        description: Identifier of the receiving agent.
+        type: BigInteger
         example: 11212
       transactionCode:
         description: Transaction code.
         type: String
         example: "TC11212"
-      destAmount:
+      senderCustomer:
+        description: Sender customer.
+        $ref: "#/definitions/SecondaryCustomer"
+      beneficiaryCustomer:
+        description: Beneficiary customer.
+        $ref: "#/definitions/PrimaryCustomer"
+      sourceCountry:
+        description: ISO 3166 country iso code (Alpha3), Sending country code ISO.
+        type: String
+        example: ARG
+      destinationCountry:
+        description: ISO 3166 country iso code (Alpha3), Pay-out country code ISO.
+        type: String
+        example: ESP
+      sourceAmount:
+        description: Source amount.
+        $ref: "#/definitions/Amount"
+      destinationAmount:
         description: Destination amount.
+        $ref: "#/definitions/Amount"
+      suspiciousBehaviour:
+        description: Suspicious behaviour. (Review annex).
+        type: Integer
+        example: 1  
+      otherSuspiciousBehaviour:
+        description: This field is required for some cases, check the annexes.
         type: String
-        example: "TC11212"
-      beneficiaryName:
-        description: Beneficiary name
-        type: String
-        example: "Ben Simmons"
-      beneficiaryBirthDate:
-        description: Beneficiary date of birth
-        type: String
-        example: "1990-12-25"
-                
+        example: null
+      sendingDate:
+        description: Sending date.
+        type: LocalDate
+        example: "2021-05-23"
+               
   PayTransferResponse:
     type: object
     required:
+      - uniqueReferenceNumber
       - transactionCode
-      - destAmount
     properties:
+      uniqueReferenceNumber:
+        description: Is the "Unique Reference Number" for a Money Transfer. This code identifies a transaction making it unique within Push Money system
+        type: String
+        example: "23131212"
       transactionCode:
         description: Transaction code.
         type: String
-        example: "TC11212"
-      destAmount:
-        description: Destination amount.
+        example: "TC11223"
+                
+  Amount:
+    description: The amount and currency of the operation.
+    type: object
+    required:
+      - amount
+      - ccy
+    properties:
+      amount:
+        description: Amount.
+        type: BigDecimal
+        example: 300.56
+      ccy:
+        description: ISO 3166 currency iso code (Alpha3).
         type: String
-        example: "TC11212"
-        
+        example: "EUR"
