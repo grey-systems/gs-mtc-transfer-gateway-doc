@@ -143,13 +143,59 @@
           "409": {
             "description": "Conflict. Message attribute of response contains duplicate customer, etc.",
             "schema": {
-              "$ref": "#/definitions/Error\n"
+              "$ref": "#/definitions/Error"
             }
           }
         }
       }
     },
-    "/transfer/send\"": {
+    "/customer/search": {
+      "post": {
+        "summary": "Search customers.",
+        "description": "Search customers in the Pushmoney system.\n\n`This method requires authentication`\n",
+        "operationId": "customeSave",
+        "parameters": [
+          {
+            "name": "Customer",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/CustomerSearchRequest"
+            }
+          }
+        ],
+        "tags": [
+          "customers"
+        ],
+        "responses": {
+          "200": {
+            "description": "Returns a list of customers or an empty list.",
+            "schema": {
+              "$ref": "#/definitions/CustomerSearchResponse"
+            }
+          },
+          "400": {
+            "description": "Invalid Request. Message attribute of response contains detailed information about the issue",
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          },
+          "401": {
+            "description": "Unauthorized.",
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          },
+          "409": {
+            "description": "Conflict. Message attribute of response contains duplicate customer, etc.",
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          }
+        }
+      }
+    },
+    "/transfer/send": {
       "post": {
         "summary": "Send a transfer.",
         "description": "Creates new transfers in the Pushmoney system.\n\n`This method requires authentication`\n",
@@ -421,6 +467,186 @@
         }
       }
     },
+    "CustomerSearchRequest": {
+      "type": "object",
+      "properties": {
+        "firstName": {
+          "description": "Customer first name.",
+          "type": "String",
+          "example": "Ben"
+        },
+        "lastname": {
+          "description": "Customer last name.",
+          "type": "String",
+          "example": "Simmons"
+        },
+        "birthDate": {
+          "description": "Customer birthdate.",
+          "type": "LocalDate",
+          "example": "2021-05-23"
+        },
+        "idDocumentNumber": {
+          "description": "Document number.",
+          "type": "String",
+          "example": "23234G"
+        },
+        "code": {
+          "description": "Customer code. Code customer local property is ignored in case it is provided in the creation of a customer",
+          "type": "String",
+          "example": "111212"
+        },
+        "codeExternal": {
+          "description": "Customer external code.",
+          "type": "String",
+          "example": "CR2323"
+        }
+      }
+    },
+    "CustomerSearchResponse": {
+      "type": "object",
+      "required": [
+        "id",
+        "code",
+        "firstName",
+        "lastname",
+        "gender",
+        "phone1",
+        "email",
+        "nationality",
+        "birthCountry",
+        "birthCityId",
+        "birthDate",
+        "address",
+        "civilStatus",
+        "occupation",
+        "document",
+        "labourIdTypeCode",
+        "labourNumber",
+        "activityBranchId",
+        "positionJobId",
+        "pep"
+      ],
+      "properties": {
+        "id": {
+          "description": "Unique customer identifier. Id property is ignored in case it is provided in the creation of a customer.",
+          "type": "BigInteger",
+          "example": 11
+        },
+        "code": {
+          "description": "Customer code. Code customer local property is ignored in case it is provided in the creation of a customer",
+          "type": "String",
+          "example": "111212"
+        },
+        "codeExternal": {
+          "description": "Customer external code.",
+          "type": "String",
+          "example": "CR2323"
+        },
+        "firstName": {
+          "description": "Customer first name.",
+          "type": "String",
+          "example": "Ben"
+        },
+        "lastname": {
+          "description": "Customer last name.",
+          "type": "String",
+          "example": "Simmons"
+        },
+        "gender": {
+          "description": "Customer gender. (Review annex).",
+          "type": "String",
+          "example": "M"
+        },
+        "phone1": {
+          "description": "Customer principal phone.",
+          "type": "String",
+          "example": "+34666666666"
+        },
+        "phone2": {
+          "description": "Customer secondary number.",
+          "type": "String",
+          "example": "+34666666666"
+        },
+        "email": {
+          "description": "Customer email.",
+          "type": "String",
+          "example": "mail@mail.com"
+        },
+        "nationality": {
+          "description": "Customer's nationality. ISO 3166 country iso code (Alpha3).",
+          "type": "String",
+          "example": "ARG"
+        },
+        "birthCountry": {
+          "description": "Customer's country of birth . ISO 3166 country iso code (Alpha3).",
+          "type": "String",
+          "example": "ARG"
+        },
+        "birthCityId": {
+          "description": "Customer's city of birth.",
+          "type": "Integer",
+          "example": 1123
+        },
+        "birthDate": {
+          "description": "Customer birthdate.",
+          "type": "LocalDate",
+          "example": "2021-05-23"
+        },
+        "address": {
+          "description": "Customer address.",
+          "$ref": "#/definitions/Address"
+        },
+        "civilStatus": {
+          "description": "Code of civil status. (Review annex).",
+          "type": "String",
+          "example": "DIV"
+        },
+        "occupation": {
+          "description": "Occupation.",
+          "type": "String",
+          "example": "Tester"
+        },
+        "document": {
+          "description": "Customer identity document.",
+          "$ref": "#/definitions/IdentityDocument"
+        },
+        "labourIdTypeCode": {
+          "description": "Code of labour type. (Review annex).",
+          "type": "String",
+          "example": "CUIT"
+        },
+        "labourNumber": {
+          "description": "Labour number.",
+          "type": "String",
+          "example": "343434"
+        },
+        "activityBranchId": {
+          "description": "Id of activity branch. (Review annex).",
+          "type": "BigInteger",
+          "example": 12
+        },
+        "activityBranchExtraInfo": {
+          "description": "This field is required for some cases, check the annexes.",
+          "type": "String",
+          "example": "Building"
+        },
+        "positionJobIds": {
+          "description": "Id of position job. (Review annex).",
+          "type": "BigInteger",
+          "example": 12
+        },
+        "positionJobExtraInfo": {
+          "description": "This field is required for some cases, check the annexes.",
+          "type": "String",
+          "example": "Director"
+        },
+        "pep": {
+          "description": "Flag to indicate if the customer is a politically exposed person.",
+          "type": "Boolean",
+          "example": false
+        }
+      }
+    },
     "Address": {
       "type": "object",
       "required": [
@@ -649,7 +875,7 @@
           "type": "String",
           "example": "111212"
         },
-        "externalCode": {
+        "codeExternal": {
           "description": "Customer external code.",
           "type": "String",
           "example": "CR2323"
@@ -779,7 +1005,7 @@
           "type": "String",
           "example": "111212"
         },
-        "externalCode": {
+        "codeExternal": {
           "description": "Customer external code.",
           "type": "String",
           "example": "CR2323"
