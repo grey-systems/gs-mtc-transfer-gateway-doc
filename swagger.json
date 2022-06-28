@@ -983,18 +983,10 @@
     "PayTransferResponse": {
       "type": "object",
       "required": [
-        "agentId",
         "transactionCode",
-        "destAmount",
-        "beneficiaryName",
-        "beneficiaryBirthDate"
+        "destAmount"
       ],
       "properties": {
-        "agentId": {
-          "description": "Identifier of the sending agent.",
-          "type": "String",
-          "example": 11212
-        },
         "transactionCode": {
           "description": "Transaction code.",
           "type": "String",
@@ -1004,16 +996,6 @@
           "description": "Destination amount.",
           "type": "String",
           "example": "TC11212"
-        },
-        "beneficiaryName": {
-          "description": "Beneficiary name",
-          "type": "String",
-          "example": "Ben Simmons"
-        },
-        "beneficiaryBirthDate": {
-          "description": "Beneficiary date of birth",
-          "type": "String",
-          "example": "1990-12-25"
         }
       }
     }
