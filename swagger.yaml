@@ -37,6 +37,8 @@ info:
 
     * **Catalogs**: This module is used to get the catalog information like, cities, currencies, etc 
     * **Customers**: Register and manage the system customer. 
+    * **Sendings**: Send transfers. 
+    * **Payments**: Paid Transfers. 
 
     # Authentication
     ### Please, note that the customers should already be registered in the system, in order to get access to the system.
