@@ -53,7 +53,7 @@ info:
     In the response, you will get a valid access token, the expiration time, the refresh token and the refresh token expiration time.
     
     Let see a response screenshot for a valid client_credential request:
-    ![access token](images/authorizations/access_token.png)
+    ![access token](.images/authorizations/access_token.png)
     
     Furthermore, if the access token is expired, you can refresh it calling again to **/auth/token**  with this parameters:
     * **grant_type (required)**: The grant_type parameter must be set to client_credentials.
