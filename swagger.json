@@ -346,7 +346,7 @@
           }
         ],
         "tags": [
-          "sendings"
+          "payments"
         ],
         "responses": {
           "200": {
@@ -1139,7 +1139,7 @@
       ],
       "properties": {
         "uniqueReferenceNumber": {
-          "description": "Is the \"Unique Reference Number\" for a Money Transfer. This code identifies a transaction making it unique within Push Money system",
+          "description": "Is the \"Unique Reference Number\" for a Money Transfer. This code identifies a transaction making it unique within Push Money system.",
           "type": "String",
           "example": "23131212"
         },
@@ -1232,7 +1232,7 @@
       ],
       "properties": {
         "uniqueReferenceNumber": {
-          "description": "Is the \"Unique Reference Number\" for a Money Transfer. This code identifies a transaction making it unique within Push Money system",
+          "description": "Is the \"Unique Reference Number\" for a Money Transfer. This code identifies a transaction making it unique within Push Money system.",
           "type": "String",
           "example": "23131212"
         },
