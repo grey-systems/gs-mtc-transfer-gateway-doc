@@ -804,10 +804,6 @@ definitions:
       beneficiaryCustomer:
         description: Beneficiary customer.
         $ref: "#/definitions/SecondaryCustomer"
-      sourceCurrency:
-        description: ISO 3166 currency iso code (Alpha3), Sending currency code ISO.
-        type: String
-        example: ARS
       sourceCountry:
         description: ISO 3166 country iso code (Alpha3), Sending country code ISO.
         type: String
@@ -816,14 +812,12 @@ definitions:
         description: ISO 3166 country iso code (Alpha3), Pay-out country code ISO.
         type: String
         example: ESP
-      payoutCurrency:
-        description: ISO 3166 currency iso code (Alpha3), Pay-out currency code ISO.
-        type: String
-        example: EUR
       sourceAmount:
-        description: Source amount that the customer will send.
-        type: Decimal
-        example: 10000
+        description: Source amount.
+        $ref: "#/definitions/Amount"
+      destinationAmount:
+        description: Destination amount.
+        $ref: "#/definitions/Amount"
       payoutMode:
         description: Kind of service to provide. (Review annex).
         type: String
@@ -966,10 +960,6 @@ definitions:
       - phone1
       - birthDate
     properties:
-      code:
-        description: Customer code. Code customer local property is ignored in case it is provided in the creation of a customer
-        type: String
-        example: "111212"
       codeExternal:
         description: Customer external code.
         type: String
@@ -1068,12 +1058,9 @@ definitions:
   SendResponse:
     type: object
     required:
-      - globalResultProcess
+      - uniqueReferenceNumber
+      - transactionCode
     properties:
-      globalResultProcess:
-        description: SUCCESS, REJECTED
-        type: String
-        example: SUCCESS
       uniqueReferenceNumber:
         description: Is the "Unique Reference Number" for a Money Transfer. This code identifies a transaction making it unique within Push Money system
         type: String
@@ -1082,10 +1069,6 @@ definitions:
         description: Is the alphanumeric code to be used by the beneficiary to pick-up the money at destination. It is extremely important that the beneficiary knows about it. In some cases, both “URN” and “Transaction Code” are the same.
         type: String
         example: "TC11223"
-      messageComplianceControl:
-        description: If the transfer is rejected due to some fraud control, this field will contain a code with the reason.
-        type: String
-        example: null
                 
   PayTransferRequest:
     type: object
