@@ -488,7 +488,7 @@ paths:
           schema:
             $ref: "#/definitions/PayTransferCancellation"
       tags:
-        - sendings
+        - payments
       responses:
         "200":
           description: Transfer payment successfully roolback.
@@ -1127,7 +1127,7 @@ definitions:
       - transactionCode
     properties:
       uniqueReferenceNumber:
-        description: Is the "Unique Reference Number" for a Money Transfer. This code identifies a transaction making it unique within Push Money system
+        description: Is the "Unique Reference Number" for a Money Transfer. This code identifies a transaction making it unique within Push Money system.
         type: String
         example: "23131212"
       transactionCode:
@@ -1202,7 +1202,7 @@ definitions:
       - transactionCode
     properties:
       uniqueReferenceNumber:
-        description: Is the "Unique Reference Number" for a Money Transfer. This code identifies a transaction making it unique within Push Money system
+        description: Is the "Unique Reference Number" for a Money Transfer. This code identifies a transaction making it unique within Push Money system.
         type: String
         example: "23131212"
       transactionCode:
