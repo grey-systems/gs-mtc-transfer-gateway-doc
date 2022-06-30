@@ -41,9 +41,9 @@ info:
     * **Payments**: Paid Transfers. 
 
     # Authentication
-    ### Please, note that the customers should already be registered in the system, in order to get access to the system.
+    ### Please, note that the users should already be registered in the system, in order to get access to the system.
 
-    The Customer Api uses the [Oauth2](https://oauth.net/2/)  standard as authentication protocol. Specifically the security used is JWT tokens.
+    The Transfer Api uses the [Oauth2](https://oauth.net/2/)  standard as authentication protocol. Specifically the security used is JWT tokens.
     
     Currently, the final user won't be authenticated in our system to create new customers. Therefore, we recommend to use the [Client Credential](https://oauth.net/2/grant-types/client-credentials/) flow defined in Oauth, very useful for services that call the API without user intervention.
 
