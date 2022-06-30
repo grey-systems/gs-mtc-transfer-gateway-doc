@@ -400,6 +400,37 @@ paths:
           description: 'Conflict. Message attribute of response contains duplicate customer, etc.'
           schema:
             $ref: '#/definitions/Error'
+  /transfer/send/cancel:
+    post:
+      summary: Cancel transfer sent.
+      description: |
+        Cancel transfers sent in the Pushmoney system.
+
+        `This method requires authentication`
+      operationId: sendCancelTransfer
+      parameters:
+        - name: SendTransferCancellation
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/SendTransferCancellation'
+      tags:
+        - sendings
+      responses:
+        '200':
+          description: Transfer successfully cancelled.
+        '400':
+          description: Invalid Request. Message attribute of response contains detailed information about the issue
+          schema:
+            $ref: '#/definitions/Error'
+        '401':
+          description: Unauthorized.
+          schema:
+            $ref: '#/definitions/Error'
+        '409':
+          description: 'Conflict. Message attribute of response contains duplicate customer, etc.'
+          schema:
+            $ref: '#/definitions/Error'
   /transfer/payment:
     post:
       summary: Pay a transfer.
@@ -421,6 +452,37 @@ paths:
           description: Transfer successfully paid.
           schema:
             $ref: '#/definitions/PayTransferResponse'
+        '400':
+          description: Invalid Request. Message attribute of response contains detailed information about the issue
+          schema:
+            $ref: '#/definitions/Error'
+        '401':
+          description: Unauthorized.
+          schema:
+            $ref: '#/definitions/Error'
+        '409':
+          description: 'Conflict. Message attribute of response contains duplicate customer, etc.'
+          schema:
+            $ref: '#/definitions/Error'
+  /transfer/payment/rollback:
+    post:
+      summary: Payment rollback.
+      description: |
+        Payment rollback in the Pushmoney system.
+
+        `This method requires authentication`
+      operationId: rollbackPayTransfer
+      parameters:
+        - name: PayTransferCancellation
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/PayTransferCancellation'
+      tags:
+        - sendings
+      responses:
+        '200':
+          description: Transfer payment successfully roolback.
         '400':
           description: Invalid Request. Message attribute of response contains detailed information about the issue
           schema:
@@ -1138,3 +1200,61 @@ definitions:
         description: ISO 3166 currency iso code (Alpha3).
         type: String
         example: EUR
+  SendTransferCancellation:
+    type: object
+    required:
+      - agentId
+      - uniqueReferenceNumber
+      - transactionCode
+      - reason
+      - operator
+    properties:
+      agentId:
+        description: Identifier of the sending agent.
+        type: BigInteger
+        example: 11212
+      uniqueReferenceNumber:
+        description: The "Unique Reference Number" for a Money Transfer.
+        type: String
+        example: '23131212'
+      transactionCode:
+        description: Transaction Code
+        type: String
+        example: TC11223
+      reason:
+        description: Reason for cancellation.
+        type: String
+        example: The customer wants his money back
+      operator:
+        description: Information of the operator that performs the operation.
+        type: String
+        example: Michael Mic
+  PayTransferCancellation:
+    type: object
+    required:
+      - agentId
+      - uniqueReferenceNumber
+      - transactionCode
+      - reason
+      - operator
+    properties:
+      agentId:
+        description: Identifier of the sending agent.
+        type: BigInteger
+        example: 11212
+      uniqueReferenceNumber:
+        description: The "Unique Reference Number" for a Money Transfer.
+        type: String
+        example: '23131212'
+      transactionCode:
+        description: Transaction Code
+        type: String
+        example: TC11223
+      reason:
+        description: Reason for cancellation.
+        type: String
+        example: The customer wants his money back
+      operator:
+        description: Information of the operator that performs the operation.
+        type: String
+        example: Michael Mic
