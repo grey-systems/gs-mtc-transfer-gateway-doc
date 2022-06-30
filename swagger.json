@@ -55,7 +55,7 @@
     }
   ],
   "paths": {
-    "/catalog/country/{iso2}/city": {
+    "/catalog/country/{iso3}/city": {
       "get": {
         "tags": [
           "catalogs"
@@ -64,7 +64,7 @@
         "description": "Returns a list of cities, filtering them by country and by the name passed by parameters. The name must contain at least three characters.",
         "parameters": [
           {
-            "name": "iso2",
+            "name": "iso3",
             "in": "path",
             "required": true,
             "type": "String",
@@ -349,10 +349,10 @@
         "positionJobId"
       ],
       "properties": {
-        "id": {
-          "description": "Unique customer identifier. Id property is ignored in case it is provided in the creation of a customer.",
-          "type": "BigInteger",
-          "example": 11
+        "codeExternal": {
+          "description": "Customer code in your system.",
+          "type": "String",
+          "example": "CR2323"
         },
         "firstName": {
           "description": "Customer first name.",
@@ -457,21 +457,9 @@
     "CustomerCreateResponse": {
       "type": "object",
       "required": [
-        "id",
-        "idCustomerLocal",
         "code"
       ],
       "properties": {
-        "id": {
-          "description": "Unique customer identifier. Id property is ignored in case it is provided in the creation of a customer.",
-          "type": "BigInteger",
-          "example": 11
-        },
-        "idCustomerLocal": {
-          "description": "Unique customer local identifier. Id customer local property is ignored in case it is provided in the creation of a customer.",
-          "type": "BigInteger",
-          "example": 121
-        },
         "code": {
           "description": "The customer's code.",
           "type": "String",
@@ -503,12 +491,12 @@
           "example": "23234G"
         },
         "code": {
-          "description": "Customer code. Code customer local property is ignored in case it is provided in the creation of a customer",
+          "description": "Internal customer code in our system",
           "type": "String",
           "example": "111212"
         },
         "codeExternal": {
-          "description": "Customer external code.",
+          "description": "Customer code in your system.",
           "type": "String",
           "example": "CR2323"
         }
@@ -517,7 +505,6 @@
     "CustomerSearchResponse": {
       "type": "object",
       "required": [
-        "id",
         "code",
         "firstName",
         "lastname",
@@ -539,11 +526,6 @@
         "pep"
       ],
       "properties": {
-        "id": {
-          "description": "Unique customer identifier. Id property is ignored in case it is provided in the creation of a customer.",
-          "type": "BigInteger",
-          "example": 11
-        },
         "code": {
           "description": "Customer code. Code customer local property is ignored in case it is provided in the creation of a customer",
           "type": "String",
@@ -700,11 +682,6 @@
         "deliveryCountry"
       ],
       "properties": {
-        "id": {
-          "description": "Unique identifier of the identity document. Id property is ignored in case it is provided in the creation of a customer.",
-          "type": "BigInteger",
-          "example": 10000
-        },
         "number": {
           "description": "Document number.",
           "type": "String",
@@ -879,16 +856,6 @@
         "pep"
       ],
       "properties": {
-        "id": {
-          "description": "Unique customer identifier. Id property is ignored in case it is provided in the creation of a customer.",
-          "type": "BigInteger",
-          "example": 11
-        },
-        "idCustomerLocal": {
-          "description": "Unique customer local identifier. Id customer local property is ignored in case it is provided in the creation of a customer.",
-          "type": "BigInteger",
-          "example": 121
-        },
         "code": {
           "description": "Customer code. Code customer local property is ignored in case it is provided in the creation of a customer",
           "type": "String",
