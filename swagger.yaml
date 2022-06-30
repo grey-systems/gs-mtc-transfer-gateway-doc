@@ -1049,15 +1049,10 @@ definitions:
   SendResponse:
     type: object
     required:
-      - resultCode
       - globalResultProcess
     properties:
-      resultCode:
-        description: Result code.
-        type: String
-        example: '0001'
       globalResultProcess:
-        description: 'SUCCESS, REJECTED, ERROR, ERROR_VALIDATION'
+        description: 'SUCCESS, REJECTED'
         type: String
         example: SUCCESS
       uniqueReferenceNumber:
