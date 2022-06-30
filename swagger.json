@@ -261,7 +261,7 @@
         ],
         "responses": {
           "200": {
-            "description": "Transfer successfully send.",
+            "description": "Transfer successfully paid.",
             "schema": {
               "$ref": "#/definitions/PayTransferResponse"
             }
