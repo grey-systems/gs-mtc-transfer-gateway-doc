@@ -78,7 +78,6 @@ info:
     * HTTP **401** (Non authorized): The token provided is expired, inexistent or non-valid.
     * HTTP **400** (Invalid Request): (Invalid Request): The request provided is invalid (request is not well formed, a mandatory field is not provided, etc..).
     * HTTP **403** (Forbidden): You are not allowed to access or update the requested resource. 
-    * HTTP **404** (Not found): The searched item could not be found (the moneypool was not found, etc..). 
     * HTTP **409** (Conflict): There is a conflict when trying to execute the operation (status change not allowed, etc..). 
     * HTTP **500** (Internal Server Error): Some internal component has failed to process your request. Please, notify to Grey Systems team.
 
@@ -577,8 +576,18 @@ definitions:
   CustomerCreateResponse:
     type: object
     required:
+      - id
+      - idCustomerLocal
       - code
     properties:
+      id:
+        description: Unique customer identifier. Id property is ignored in case it is provided in the creation of a customer.
+        type: BigInteger
+        example: 11
+      idCustomerLocal:
+        description: Unique customer local identifier. Id customer local property is ignored in case it is provided in the creation of a customer.
+        type: BigInteger
+        example: 121
       code:
         description: The customer's code.
         type: String
@@ -799,6 +808,8 @@ definitions:
       - calculatorMode
       - payoutMode
       - customerRelationship
+      - suspiciousBehaviour
+      - operator
     properties:
       agentId:
         description: Identifier of the sending agent.
@@ -878,6 +889,10 @@ definitions:
         description: 'This field is required for some cases, check the annexes.'
         type: String
         example: null
+      operator:
+        description: Information of the operator that performs the operation.
+        type: String
+        example: Michael Mic
   PrimaryCustomer:
     type: object
     required:
@@ -1154,6 +1169,8 @@ definitions:
       - sourceCountry
       - sourceAmount
       - destinationAmount
+      - suspiciousBehaviour
+      - operator
       - sendingDate
     properties:
       agentId:
@@ -1192,6 +1209,10 @@ definitions:
         description: 'This field is required for some cases, check the annexes.'
         type: String
         example: null
+      operator:
+        description: Information of the operator that performs the operation.
+        type: String
+        example: Michael Mic
       sendingDate:
         description: Sending date.
         type: LocalDate
