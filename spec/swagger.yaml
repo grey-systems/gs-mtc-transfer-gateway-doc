@@ -185,14 +185,6 @@ info:
     |18|Consultant|No|
     |19|Other (specify)|Yes|
     
-    ## Calculation mode
-    
-    | Code | Description |
-    |-----|-------|
-    | SOURCE_AMOUNT   | Amount to send is given and the amount to receive is calculated. |
-    | SOURCE_AMOUNT_WITH_FEES   | Amount to send is given and the amount to receive is calculated, including fees. |
-    | DESTINATION_AMOUNT   | Receive mode: given a certain amount to receive the source amount is calculated. |
-    
     ## Payour mode
     
     | Code | Description |
@@ -644,7 +636,6 @@ definitions:
       - labourNumber
       - activityBranchId 
       - positionJobId 
-      - pep 
     properties:
       code:
         description: Customer code. Code customer local property is ignored in case it is provided in the creation of a customer
@@ -732,10 +723,6 @@ definitions:
         description: This field is required for some cases, check the annexes.
         type: String
         example: Director
-      pep:
-        description: Flag to indicate if the customer is a politically exposed person.
-        type: Boolean
-        example: false
   Address:
     type: object
     required:
@@ -801,7 +788,6 @@ definitions:
       - sourceCountry
       - destinationCountry
       - payoutCurrency
-      - payerId
       - calculatorMode
       - payoutMode
       - customerRelationship
@@ -834,40 +820,14 @@ definitions:
         description: ISO 3166 currency iso code (Alpha3), Pay-out currency code ISO.
         type: String
         example: EUR
-      payerId:
-        description: Id of the destination payer.
-        type: BigInteger
-        example: 92
-      destinationId:
-        description: Id of the destination office (Non required).
-        type: BigInteger
-        example: 124392
-      calculatorMode:
-        description: Transfer request calculation modes enumeration. (Review annex). 
-        type: String
-        example: SOURCE_AMOUNT
       sourceAmount:
-        description: Source amount that the customer will send. If the calculation mode is SOURCE_AMOUNT, this field will be required.
+        description: Source amount that the customer will send.
         type: Decimal
         example: 10000
-      destinationAmount:
-        description: Destination amount that the customer wants the receiver receive.. If the calculation mode is DESTINATION_AMOUNT, this field will be required.
-        type: Decimal
-        example: null
-      sourceAmountWithFees:
-        description: Source amount that the customer will send, including fees. If the calculation mode is SOURCE_AMOUNT_WITH_FEES, this field will be required.
-        type: Decimal
-        example: null
       payoutMode:
         description: Kind of service to provide. (Review annex).
         type: String
         example: "CSA"
-      promotionalCodes:
-        description: List of promotinal codes.
-        type: array
-        items: 
-          type: "String"
-        example: ["promo1", "promo2"]
       customerRelationship:
         description: Customer eelationship. (Review annex).
         type: BigInteger
@@ -909,7 +869,6 @@ definitions:
       - labourNumber
       - activityBranchId 
       - positionJobId 
-      - pep      
     properties:
       code:
         description: Customer code. Code customer local property is ignored in case it is provided in the creation of a customer
@@ -997,10 +956,6 @@ definitions:
         description: This field is required for some cases, check the annexes.
         type: String
         example: Director
-      pep:
-        description: Flag to indicate if the customer is a politically exposed person.
-        type: Boolean
-        example: false
        
   SecondaryCustomer:
     type: object
@@ -1097,10 +1052,6 @@ definitions:
         description: This field is required for some cases, check the annexes.
         type: String
         example: Director
-      pep:
-        description: Flag to indicate if the customer is a politically exposed person.
-        type: Boolean
-        example: false
       bankAccountNumber:
         description: Bank account number to deposit the money. *Not optional for “BA” money transfers. Only applies on “BA” (Bank Account) money transfers.*
         type: String
@@ -1124,12 +1075,8 @@ definitions:
         description: Result code.
         type: String
         example: "0001"
-      resultMessage:
-        description: Message with the result (only in error cases).
-        type: String
-        example: null
       globalResultProcess:
-        description: SUCCESS, PENDING, REJECTED, ERROR,ERROR_VALIDATION,NEW_FRAUD_CONTROL
+        description: SUCCESS, REJECTED, ERROR, ERROR_VALIDATION
         type: String
         example: SUCCESS
       uniqueReferenceNumber:
@@ -1141,7 +1088,7 @@ definitions:
         type: String
         example: "TC11223"
       messageComplianceControl:
-        description: If the transfer is rejected or remains pending due to some fraud control, this field will contain a code with the reason.
+        description: If the transfer is rejected due to some fraud control, this field will contain a code with the reason.
         type: String
         example: null
                 
