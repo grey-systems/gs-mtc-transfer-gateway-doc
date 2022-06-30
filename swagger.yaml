@@ -995,10 +995,6 @@ definitions:
       - phone1
       - birthDate
     properties:
-      id:
-        description: Unique customer identifier. Id property is ignored in case it is provided in the creation of a customer.
-        type: BigInteger
-        example: 11
       code:
         description: Customer code. Code customer local property is ignored in case it is provided in the creation of a customer
         type: String
