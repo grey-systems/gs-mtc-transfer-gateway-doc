@@ -710,7 +710,7 @@ definitions:
         type: String
         example: "111212"
       codeExternal:
-        description: Customer external code.
+        description: Customer code in your system.
         type: String
         example: "CR2323"
       firstName:
@@ -937,7 +937,7 @@ definitions:
         type: String
         example: "111212"
       codeExternal:
-        description: Customer external code.
+        description: Customer code in your system.
         type: String
         example: "CR2323"
       firstName:
@@ -1029,7 +1029,7 @@ definitions:
       - birthDate
     properties:
       codeExternal:
-        description: Customer external code.
+        description: Customer code in your system.
         type: String
         example: "CR2323"
       firstName:
@@ -1269,7 +1269,7 @@ definitions:
       - operator
     properties:
       agentId:
-        description: Identifier of the sending agent.
+        description: Identifier of the receiving agent.
         type: BigInteger
         example: 11212
       uniqueReferenceNumber:
