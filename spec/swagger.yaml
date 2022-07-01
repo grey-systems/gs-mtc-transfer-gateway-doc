@@ -76,9 +76,9 @@ info:
     The MTC Rest API uses the following common HTTP status codes to communicate general issues or errors to the clients: 
      
     * HTTP **401** (Non authorized): The token provided is expired, inexistent or non-valid.
-    * HTTP **400** (Invalid Request): (Invalid Request): The request provided is invalid (request is not well formed, a mandatory field is not provided, etc..).
+    * HTTP **400** (Invalid Request): The request provided is invalid (request is not well formed, a mandatory field is not provided, etc..).
     * HTTP **403** (Forbidden): You are not allowed to access or update the requested resource. 
-    * HTTP **409** (Conflict): There is a conflict when trying to execute the operation (status change not allowed, etc..). 
+    * HTTP **409** (Conflict): There is a conflict when trying to execute the operation (status change not allowed, compliance, etc..). 
     * HTTP **500** (Internal Server Error): Some internal component has failed to process your request. Please, notify to Grey Systems team.
     
     
@@ -154,7 +154,7 @@ info:
     |29|Institutions and Health Professionals|No|
     |30|Non-Governmental Organizations (NGO's)|No|
     |31|Nonprofit organizations|No|
-    |32|Others (specify)|Yes|
+    |32|Others (specify)|**Yes**|
     |33|Producers, dealers and distributors of weapons|No|
     |34|Services to households and domestic service|No|
     |35|Supplies (water, sewage, sanitation, electricity, gas supply, others)|No|
@@ -183,7 +183,7 @@ info:
     |16|Director|No|
     |17|Driver, cadet, ordinance|No|
     |18|Consultant|No|
-    |19|Other (specify)|Yes|
+    |19|Other (specify)|**Yes**|
     
     ## Payour mode
     
@@ -228,7 +228,7 @@ info:
     |26|Employer|No|
     |27|Employee|No|
     |28|Self|No|
-    |29|Other|Yes|
+    |29|Other|**Yes**|
     
     ## Suspicious behaviour
     
@@ -240,7 +240,7 @@ info:
     |4|Reluctant to produce a proof of address | No | Both |
     |5|Just below the limit to avoid completing form | No | Send |
     |6|Reluctant to produce a proof of address | No | Send |
-    |7|Other | Yes | Both |
+    |7|Other | **Yes** | Both |
     |9|Client has many beneficiaries | No | Send |
     |10|Less than 26 years old sends high amounts | No | Send |
     |11|Does not seem to know his/her beneficiary | No | Send |
