@@ -539,7 +539,7 @@ definitions:
       - civilStatus
       - occupation
       - document
-      - labourIdTypeCode
+      - labourTypeCode
       - labourNumber
       - activityBranchId
       - positionJobId
@@ -606,7 +606,7 @@ definitions:
       document:
         description: Customer identity document.
         $ref: '#/definitions/IdentityDocument'
-      labourIdTypeCode:
+      labourTypeCode:
         description: Code of labour type. (Review annex).
         type: String
         example: CUIT
@@ -622,7 +622,7 @@ definitions:
         description: 'This field is required for some cases, check the annexes.'
         type: String
         example: Building
-      positionJobIds:
+      positionJobId:
         description: Id of position job. (Review annex).
         type: BigInteger
         example: 12
@@ -683,7 +683,7 @@ definitions:
       - civilStatus
       - occupation
       - document
-      - labourIdTypeCode
+      - labourTypeCode
       - labourNumber
       - activityBranchId
       - positionJobId
@@ -750,7 +750,7 @@ definitions:
       document:
         description: Customer identity document.
         $ref: '#/definitions/IdentityDocument'
-      labourIdTypeCode:
+      labourTypeCode:
         description: Code of labour type. (Review annex).
         type: String
         example: CUIT
@@ -766,7 +766,7 @@ definitions:
         description: 'This field is required for some cases, check the annexes.'
         type: String
         example: Building
-      positionJobIds:
+      positionJobId:
         description: Id of position job. (Review annex).
         type: BigInteger
         example: 12
@@ -907,7 +907,7 @@ definitions:
       - civilStatus
       - occupation
       - document
-      - labourIdTypeCode
+      - labourTypeCode
       - labourNumber
       - activityBranchId
       - positionJobId
@@ -974,7 +974,7 @@ definitions:
       document:
         description: Customer identity document.
         $ref: '#/definitions/IdentityDocument'
-      labourIdTypeCode:
+      labourTypeCode:
         description: Code of labour type. (Review annex).
         type: String
         example: CUIT
@@ -990,7 +990,7 @@ definitions:
         description: 'This field is required for some cases, check the annexes.'
         type: String
         example: Building
-      positionJobIds:
+      positionJobId:
         description: Id of position job. (Review annex).
         type: BigInteger
         example: 12
@@ -1065,7 +1065,7 @@ definitions:
       document:
         description: Customer identity document.
         $ref: '#/definitions/IdentityDocument'
-      labourIdTypeCode:
+      labourTypeCode:
         description: Code of labour type. (Review annex).
         type: String
         example: CUIT
@@ -1081,7 +1081,7 @@ definitions:
         description: 'This field is required for some cases, check the annexes.'
         type: String
         example: Building
-      positionJobIds:
+      positionJobId:
         description: Id of position job. (Review annex).
         type: BigInteger
         example: 12
