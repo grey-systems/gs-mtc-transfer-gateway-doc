@@ -223,7 +223,6 @@ info:
     |22|Grand brother in law|No|
     |23|Grand fiance|No|
     |24|Business associate|No|  
-    |24|Business associate|No|
     |25|Service provider|No|
     |26|Employer|No|
     |27|Employee|No|
@@ -545,6 +544,10 @@ definitions:
       - activityBranchId
       - positionJobId
     properties:
+      id:
+        description: Unique customer identifier. Id property is ignored in case it is provided in the creation of a customer.
+        type: BigInteger
+        example: 11
       codeExternal:
         description: Customer code in your system.
         type: String
